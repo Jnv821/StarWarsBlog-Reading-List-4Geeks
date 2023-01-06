@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faJedi } from "@fortawesome/free-solid-svg-icons";
+
 export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+				<FontAwesomeIcon icon={faJedi} className="brandName"/>
 			</Link>
 			<div className="ml-auto">
 				<Link to="/demo">

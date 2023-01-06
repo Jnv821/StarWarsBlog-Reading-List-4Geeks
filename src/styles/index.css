@@ -1,3 +1,9 @@
 /* 
     General Styles
 */
+
+.brandName{
+    font-size: 32px;
+    padding: 0px 30px;
+    color: black;
+}
