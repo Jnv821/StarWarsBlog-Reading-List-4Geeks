@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import "../../styles/home.css";
 
+import { CardComponent } from "../component/card.js"
+
 export const Home = () => {
 	// Define State variables
 
@@ -55,5 +57,6 @@ export const Home = () => {
 	}, [people, planets, vehicles])
 return (
 	<>
+		<CardComponent />
 	</>
 )};
