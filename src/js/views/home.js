@@ -3,12 +3,13 @@ import { useState } from "react";
 import "../../styles/home.css";
 
 import { CardComponent } from "../component/card.js"
+import { CardList } from "../component/cardList.js";
 
 export const Home = () => {
 	// Define State variables
 
-	const [people, setPeople] = useState("");
-	const [planets, setPlanets] = useState("");
+	const [people, setPeople] = useState([]);
+	const [planets, setPlanets] = useState([]);
 	const [vehicles, setVehicles] = useState([])
 
 	// fetch all the required data
@@ -57,6 +58,6 @@ export const Home = () => {
 	}, [people, planets, vehicles])
 return (
 	<>
-		<CardComponent />
+		<CardList data={people}/>
 	</>
 )};
