@@ -10,8 +10,9 @@ export const CardList = (props) => {
     })
 
     return (
-        <Container fluid>
-            <Row className='a'>
+        <Container>
+            <h1>{props.title}</h1>
+            <Row className='cardList'>
                 {cards}
             </Row>
         </Container>
