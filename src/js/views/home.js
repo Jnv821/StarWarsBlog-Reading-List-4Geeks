@@ -10,7 +10,7 @@ export const Home = () => {
 
 	const [people, setPeople] = useState([]);
 	const [planets, setPlanets] = useState([]);
-	const [vehicles, setVehicles] = useState([])
+	const [vehicles, setVehicles] = useState([]);
 
 	// fetch all the required data
 
@@ -60,6 +60,6 @@ return (
 	<>
 		<CardList data={people} descriptionIndex={0} title={"Characters"}/>
 		<CardList data={planets} descriptionIndex={1} title={"Planets"}/>
-		<CardList data={vehicles} descriptionIndex={2} title={"Vehicles"}/>
+		<CardList data={vehicles} descriptionIndex={2} title={""}/>
 	</>
 )};
