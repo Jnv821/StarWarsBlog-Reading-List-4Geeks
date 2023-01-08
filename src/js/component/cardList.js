@@ -6,7 +6,7 @@ import { CardComponent } from './card.js';
 export const CardList = (props) => {
 
     const cards = props.data.map((element, i) => {
-        return(<CardComponent key={i} data={props.data[i]}/>)
+        return(<CardComponent descriptionIndex={props.descriptionIndex} key={i} data={props.data[i]}/>)
     })
 
     return (

@@ -58,6 +58,8 @@ export const Home = () => {
 	}, [people, planets, vehicles])
 return (
 	<>
-		<CardList data={people}/>
+		<CardList data={people} descriptionIndex={0}/>
+		<CardList data={planets} descriptionIndex={1}/>
+		<CardList data={vehicles} descriptionIndex={2}/>
 	</>
 )};
