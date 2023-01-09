@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import { useEffect, useState } from 'react';
+import { Context } from '../store/appContext';
+import { useContext } from 'react';
 
 export const CardComponent = (props) => {
     
-
+    const {actions} = useContext(Context)
 
 
     const data = props.data
@@ -22,16 +22,16 @@ export const CardComponent = (props) => {
 
 
 return (
-<Card style={{width: "350px"}} className="mx-3 px-0">
+<Card style={{width: "400px"}} className="mx-3 px-0">
     <Card.Img variant="top" src="https://via.placeholder.com/150" />
         <Card.Body>
             <Card.Title>{data.name}</Card.Title>
                 <Card.Text>
                 {description[props.descriptionIndex]}
                 </Card.Text>
-                <Link to={url}><Button variant="outline-primary">Learn More...</Button></Link>
-                <Button variant="outline-warning float-end" onClick={() => props.handleFavorites(data.name)}><FontAwesomeIcon icon={faHeart}/></Button>
-        </Card.Body>
+            <Link to={url}><Button variant="outline-primary">Learn More!</Button></Link>
+        <Button variant="outline-warning float-end" onClick={() => actions.addFavorites(data.name)}><FontAwesomeIcon icon={faHeart}/></Button>
+    </Card.Body>
 </Card>
 )
 }

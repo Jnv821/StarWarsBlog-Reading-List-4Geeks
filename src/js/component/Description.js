@@ -13,8 +13,7 @@ export const Description = (props) => {
         for (let prop of propertiesToDelete) {
             delete dataProps.properties[prop];
         }
-        console.table("Data", data)
-        console.table("DataProps", dataProps)
+        
         const propertyKeys = Object.keys(dataProps.properties)
 
         const charactersiticsName = propertyKeys.map((key,i) => {

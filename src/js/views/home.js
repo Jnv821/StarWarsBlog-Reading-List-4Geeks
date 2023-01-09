@@ -12,13 +12,29 @@ export const Home = (props) => {
 	const [planets, setPlanets] = useState([]);
 	const [vehicles, setVehicles] = useState([]);
 
+	const [peopleCharacteristics, setPeopleCharacteristics] = useState([])
+	const [planetCharacteristics, setPlanetCharacteristics] = useState([])
+	const [vehiclesCharactersitics, setVehiclesCharacteristics] = useState([])
 	// fetch all the required data
 
 	// Fetch: People. 
 	useEffect(() => {
 		fetch("https://www.swapi.tech/api/people", {})
 		.then(response => response.json())
-		.then(data => setPeople([...data.results]))
+		.then(data => { 
+			// Set the array for CardList
+			setPeople([...data.results])
+			// Set the Array for Card Information.
+
+			data.results.forEach((ele) => {
+				fetch(ele.url, {})
+				.then(response => response.json())
+				.then(ele => {
+					setPeopleCharacteristics((peopleCharacteristics) => [...peopleCharacteristics, ele.result.properties])
+					})
+				.catch(err => console.log("%c Error: " + err, "color: #ff2200"))
+			})	
+		})
 		.catch(err => console.log("Error: " + err))
 	}, [])
 
@@ -26,7 +42,18 @@ export const Home = (props) => {
 	useEffect(() => {
 		fetch("https://www.swapi.tech/api/planets", {})
 		.then(response => response.json())
-		.then(data => setPlanets([...data.results]))
+		.then(data => {
+			// Set the Array for CardList
+			setPlanets([...data.results])
+			// Set the Array for Card Information.
+			data.results.forEach((ele) => {
+				fetch(ele.url, {})
+				.then(response => response.json())
+				.then(ele => {
+					setPlanetCharacteristics((planetCharacteristics) => [...planetCharacteristics, ele.result.properties])
+				})
+			})	
+		})
 		.catch(err => "Error: " + err)
 	}, [])
 
@@ -35,7 +62,18 @@ export const Home = (props) => {
 	useEffect(() => {
 		fetch("https://www.swapi.tech/api/vehicles",{})
 		.then(response => response.json())
-		.then(data => setVehicles([...data.results]))
+		.then(data => {
+			// Set the Array for CardList
+			setVehicles([...data.results])
+			// Set the array for Card Information
+			data.results.forEach((ele) => {
+				fetch(ele.url, {})
+				.then(response => response.json())
+				.then( ele => {
+					setVehiclesCharacteristics((vehiclesCharactersitics) => [...VehiclesCharacteristics, ele.result.properties])
+				})
+			})
+		})
 		.catch(err => "Error: " + err)
 	}, [])
 	
@@ -44,6 +82,9 @@ export const Home = (props) => {
 	console.group("StarWars API DATA")
 		console.group("People Data")
 		console.log(people)
+		console.group("Specific People Data")
+		console.log(peopleCharacteristics)
+		console.groupEnd()
 		console.groupEnd()
 
 		console.group("Planet Data")
