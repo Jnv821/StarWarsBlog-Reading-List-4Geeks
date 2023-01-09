@@ -5,7 +5,7 @@ import "../../styles/home.css";
 import { CardComponent } from "../component/card.js"
 import { CardList } from "../component/cardList.js";
 
-export const Home = () => {
+export const Home = (props) => {
 	// Define State variables
 
 	const [people, setPeople] = useState([]);
@@ -58,8 +58,8 @@ export const Home = () => {
 	}, [people, planets, vehicles])
 return (
 	<>
-		<CardList data={people} descriptionIndex={0} title={"Characters"}/>
-		<CardList data={planets} descriptionIndex={1} title={"Planets"}/>
-		<CardList data={vehicles} descriptionIndex={2} title={""}/>
+		<CardList data={people} descriptionIndex={0} title={"Characters"} handleFavorites={props.handleFavorites}/>
+		<CardList data={planets} descriptionIndex={1} title={"Planets"} handleFavorites={props.handleFavorites}/>
+		<CardList data={vehicles} descriptionIndex={2} title={"Vehicles"} handleFavorites={props.handleFavorites}/>
 	</>
 )};

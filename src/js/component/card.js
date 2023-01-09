@@ -1,15 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useEffect, useState } from 'react';
 
 export const CardComponent = (props) => {
     
+
+
+
     const data = props.data
     // Clean the url "/https://www.swapi.tech/api/people/2" from props.data.url
 
     const url = props.data.url.split("/api/")[1]
+
     
     // This data should be provided by the API but it doesn't. So this will be a partial solution passing an index as a prop.
     const description=["A person within the Star Wars universe", "A planet within the Star Wars univers", "A vehicle within the Star Wars univers"]
@@ -23,7 +29,8 @@ return (
                 <Card.Text>
                 {description[props.descriptionIndex]}
                 </Card.Text>
-            <Button variant="primary"><Link to={url}>Go somewhere</Link></Button>
+                <Link to={url}><Button variant="outline-primary">Learn More...</Button></Link>
+                <Button variant="outline-warning float-end" onClick={() => props.handleFavorites(data.name)}><FontAwesomeIcon icon={faHeart}/></Button>
         </Card.Body>
 </Card>
 )
