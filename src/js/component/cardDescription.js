@@ -8,27 +8,27 @@ export const CardDescription = (props) => {
     if(props.type === "Characters"){
         description =  (
             <>
-            <Card.Text><span className='fw-bold fs-6'>Gender: </span>{props.data.gender}</Card.Text>
-            <Card.Text><span className='fw-bold fs-6'>Skin Color: </span>{props.data.skin_color}</Card.Text>
-            <Card.Text><span className='fw-bold fs-6'>Eye Color: </span>{props.data.eye_color}</Card.Text>
+            {props.data ? <Card.Text><span className='fw-bold fs-6'>Gender: </span>{props.data.result.properties.gender}</Card.Text> : <Card.Text>Loading</Card.Text>}
+            {props.data ? <Card.Text><span className='fw-bold fs-6'>Skin Color: </span>{props.data.result.properties.skin_color}</Card.Text>: <Card.Text>Loading</Card.Text>}
+            {props.data ? <Card.Text><span className='fw-bold fs-6'>Eye Color: </span>{props.data.result.properties.eye_color}</Card.Text>: <Card.Text>Loading</Card.Text>}
             </>
         )
     }
     else if (props.type==="Planets"){
         description = (
             <>
-            <Card.Text><span className='fw-bold fs-6'>Climate: </span>{props.data.climate}</Card.Text>
-            <Card.Text><span className='fw-bold fs-6'>Terrain: </span>{props.data.terrain}</Card.Text>
-            <Card.Text><span className='fw-bold fs-6'>Gravity: </span>{props.data.gravity}</Card.Text>
+            {props.data ? <Card.Text><span className='fw-bold fs-6'>Climate: </span>{props.data.result.properties.climate}</Card.Text>: <Card.Text>Loading</Card.Text>}
+            {props.data ? <Card.Text><span className='fw-bold fs-6'>Terrain: </span>{props.data.result.properties.terrain}</Card.Text>: <Card.Text>Loading</Card.Text>}
+            {props.data ? <Card.Text><span className='fw-bold fs-6'>Gravity: </span>{props.data.result.properties.gravity}</Card.Text>: <Card.Text>Loading</Card.Text>}
             </>
         )
     } 
     else if(props.type === "Vehicles"){
         description = (
             <>
-            <Card.Text><span className='fw-bold fs-6'>Vehicle Class: </span>{props.data.vehicle_class}</Card.Text>
-            <Card.Text><span className='fw-bold fs-6'>Manufacturer: </span>{props.data.manufacturer}</Card.Text>
-            <Card.Text><span className='fw-bold fs-6'>Max speed: </span>{props.data.max_atmosphering_speed}</Card.Text>
+            {props.data ? <Card.Text><span className='fw-bold fs-6'>Vehicle Class: </span>{props.data.result.properties.vehicle_class}</Card.Text>: <Card.Text>Loading</Card.Text>}
+            {props.data ? <Card.Text><span className='fw-bold fs-6'>Manufacturer: </span>{props.data.result.properties.manufacturer}</Card.Text>: <Card.Text>Loading</Card.Text>}
+            {props.data ? <Card.Text><span className='fw-bold fs-6'>Max speed: </span>{props.data.result.properties.max_atmosphering_speed}</Card.Text>: <Card.Text>Loading</Card.Text>}
             </>
         )
     }
@@ -42,7 +42,7 @@ export const CardDescription = (props) => {
     
     return (
         <>
-        {description}
+        {props.data ? description : <Card.Text>Loading</Card.Text>} 
         </>
     )
 } 
